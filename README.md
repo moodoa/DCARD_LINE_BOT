@@ -16,7 +16,25 @@ python >= 3.7
 `pip install -r requriements.txt`
 
 ## usage
-* 在對話框輸入`熱門看板`，機器人回應當前熱門看板 top 10
+* 關於 line bot 的設定
+1.Channel secret 在 Basic Settings 裡面可以找到，Channel access token 則是在 Messaging API 裡面。
+![alt text](https://cdn-images-1.medium.com/max/1000/1*ZWscTYpEzFrDh25-C4DPUw.png)
+2.Messaging API 裡面的 Use webhook 要打開。
+3.Webhook URL 輸入由 ngrok 產生的url，後面要加/callback。
+![alt text](https://cdn-images-1.medium.com/max/1000/1*3woQVYFoiDh2r6f-Ic-syg.png)
+
+* 關於 Flask 和 Ngrok 的設定
+1.開啟終端機，進到工作資料夾後輸入：
+`PS D:\dir> flask run`
+預設路徑會是在 127.0.0.1:5000
+` * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)`
+2.打開下載好的 Ngrok，輸入：
+`ngrok http http://127.0.0.1:5000/`
+會跳出以下資訊
+![alt text](https://cdn-images-1.medium.com/max/1000/1*nuD9yOzAC5c21ZvCWDK_iw.png)
+其中 forwardi之後的 https 網址放到 Webhook URL。
+如此便完成 LINE bot 架設。
+
 ![alt text](https://i.imgur.com/VEX2mOq.png)
 * 在對話框輸入`看板名稱(英文)`，取得該看板熱門文章 top 10，若要搜尋特定文章則使用`關鍵字@看板`搜尋
 ![alt text](https://i.imgur.com/kr0mTNg.png)
